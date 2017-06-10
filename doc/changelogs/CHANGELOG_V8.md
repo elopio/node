@@ -6,6 +6,7 @@
 </tr>
 <tr>
 <td>
+<a href="#8.1.1">8.1.1</a><br/>
 <a href="#8.1.0">8.1.0</a><br/>
 <a href="#8.0.0">8.0.0</a><br/>
 </td>
@@ -21,6 +22,65 @@
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
   * [Archive](CHANGELOG_ARCHIVE.md)
+
+<a id="8.1.1"></a>
+## 2017-06-12, Version 8.1.1 (Current), @addaleax
+
+### Notable changes
+
+* **Child processes**
+  * `stdout` and `stderr` are now available on the error output of a
+    failed call to the `util.promisify()`ed version of
+    `child_process.exec`.
+    [[`d66d4fc94c`](https://github.com/nodejs/node/commit/d66d4fc94c)]
+    [#13388](https://github.com/nodejs/node/pull/13388)
+
+* **HTTPS**
+  * The `rejectUnauthorized` option now works properly for unix sockets.
+    [[`c4cbd99d37`](https://github.com/nodejs/node/commit/c4cbd99d37)]
+    [#13505](https://github.com/nodejs/node/pull/13505)
+
+* **Readline**
+  * A change that broke `npm init` and other code which uses `readline`
+    multiple times on the same input stream is reverted.
+    [[`0df6c0b5f0`](https://github.com/nodejs/node/commit/0df6c0b5f0)]
+    [#13560](https://github.com/nodejs/node/pull/13560)
+
+### Commits
+
+* [[`61c73085ba`](https://github.com/nodejs/node/commit/61c73085ba)] - **async_hooks**: minor refactor to callback invocation (Anna Henningsen) [#13419](https://github.com/nodejs/node/pull/13419)
+* [[`bf61d97742`](https://github.com/nodejs/node/commit/bf61d97742)] - **async_hooks**: make sure `.{en|dis}able() === this` (Anna Henningsen) [#13418](https://github.com/nodejs/node/pull/13418)
+* [[`d66d4fc94c`](https://github.com/nodejs/node/commit/d66d4fc94c)] - **child_process**: promisify includes stdio in error (Gil Tayar) [#13388](https://github.com/nodejs/node/pull/13388)
+* [[`0ca4bd1e18`](https://github.com/nodejs/node/commit/0ca4bd1e18)] - **child_process**: reduce nextTick() usage (Brian White) [#13459](https://github.com/nodejs/node/pull/13459)
+* [[`d1fa59fbb7`](https://github.com/nodejs/node/commit/d1fa59fbb7)] - **child_process**: simplify send() result handling (Brian White) [#13459](https://github.com/nodejs/node/pull/13459)
+* [[`d51b1c2e6f`](https://github.com/nodejs/node/commit/d51b1c2e6f)] - **cluster, dns, repl, tls, util**: fix RegExp nits (Vse Mozhet Byt) [#13536](https://github.com/nodejs/node/pull/13536)
+* [[`53ec50d971`](https://github.com/nodejs/node/commit/53ec50d971)] - **doc**: fix napi_create_*_error signatures in n-api (Jamen Marzonie) [#13544](https://github.com/nodejs/node/pull/13544)
+* [[`98d7f25181`](https://github.com/nodejs/node/commit/98d7f25181)] - **doc**: fix out of date sections in n-api doc (Michael Dawson) [#13508](https://github.com/nodejs/node/pull/13508)
+* [[`85cac4ed53`](https://github.com/nodejs/node/commit/85cac4ed53)] - **doc**: update new CTC members (Refael Ackermann) [#13534](https://github.com/nodejs/node/pull/13534)
+* [[`8c5407d321`](https://github.com/nodejs/node/commit/8c5407d321)] - **doc**: corrects reference to tlsClientError (Tarun) [#13533](https://github.com/nodejs/node/pull/13533)
+* [[`3d12e1b455`](https://github.com/nodejs/node/commit/3d12e1b455)] - **doc**: emphasize Collaborators in GOVERNANCE.md (Rich Trott) [#13423](https://github.com/nodejs/node/pull/13423)
+* [[`a9be8fff58`](https://github.com/nodejs/node/commit/a9be8fff58)] - **doc**: minimal documentation for Emeritus status (Rich Trott) [#13421](https://github.com/nodejs/node/pull/13421)
+* [[`2778256680`](https://github.com/nodejs/node/commit/2778256680)] - **doc**: remove note highlighting in GOVERNANCE doc (Rich Trott) [#13420](https://github.com/nodejs/node/pull/13420)
+* [[`c4cbd99d37`](https://github.com/nodejs/node/commit/c4cbd99d37)] - **https**: support rejectUnauthorized for unix sockets (cjihrig) [#13505](https://github.com/nodejs/node/pull/13505)
+* [[`6a696d15ff`](https://github.com/nodejs/node/commit/6a696d15ff)] - **inspector**: fix crash on exception (Nikolai Vavilov) [#13455](https://github.com/nodejs/node/pull/13455)
+* [[`0df6c0b5f0`](https://github.com/nodejs/node/commit/0df6c0b5f0)] - ***Revert*** "**readline**: clean up event listener in onNewListener" (Anna Henningsen) [#13560](https://github.com/nodejs/node/pull/13560)
+* [[`4a96ed4896`](https://github.com/nodejs/node/commit/4a96ed4896)] - **src**: check whether inspector is doing io (Sam Roberts) [#13504](https://github.com/nodejs/node/pull/13504)
+* [[`f134c9d147`](https://github.com/nodejs/node/commit/f134c9d147)] - **src**: correct indentation for X509ToObject (Daniel Bevenius) [#13543](https://github.com/nodejs/node/pull/13543)
+* [[`dd158b096f`](https://github.com/nodejs/node/commit/dd158b096f)] - **src**: make IsConstructCall checks consistent (Daniel Bevenius) [#13473](https://github.com/nodejs/node/pull/13473)
+* [[`bf065344cf`](https://github.com/nodejs/node/commit/bf065344cf)] - **stream**: ensure that instanceof fast-path is hit. (Benedikt Meurer) [#13403](https://github.com/nodejs/node/pull/13403)
+* [[`2ea529b797`](https://github.com/nodejs/node/commit/2ea529b797)] - **test**: add regression test for 13557 (Anna Henningsen) [#13560](https://github.com/nodejs/node/pull/13560)
+* [[`4d27930faf`](https://github.com/nodejs/node/commit/4d27930faf)] - **test**: fix flaky test-tls-socket-close (Rich Trott) [#13529](https://github.com/nodejs/node/pull/13529)
+* [[`3da56ac9fb`](https://github.com/nodejs/node/commit/3da56ac9fb)] - **test**: harden test-dgram-bind-shared-ports (Refael Ackermann) [#13100](https://github.com/nodejs/node/pull/13100)
+* [[`f686f73465`](https://github.com/nodejs/node/commit/f686f73465)] - **test**: add coverage for AsyncResource constructor (Gergely Nemeth) [#13327](https://github.com/nodejs/node/pull/13327)
+* [[`12036a1d73`](https://github.com/nodejs/node/commit/12036a1d73)] - **test**: exercise once() with varying arguments (cjihrig) [#13524](https://github.com/nodejs/node/pull/13524)
+* [[`1f88cbd620`](https://github.com/nodejs/node/commit/1f88cbd620)] - **test**: refactor test-http-server-keep-alive-timeout (realwakka) [#13448](https://github.com/nodejs/node/pull/13448)
+* [[`bdbeb33dcb`](https://github.com/nodejs/node/commit/bdbeb33dcb)] - **test**: add hijackStdout and hijackStderr (XadillaX) [#13439](https://github.com/nodejs/node/pull/13439)
+* [[`1c7f9171c0`](https://github.com/nodejs/node/commit/1c7f9171c0)] - **test**: add coverage for napi_property_descriptor (Michael Dawson) [#13510](https://github.com/nodejs/node/pull/13510)
+* [[`c8db0475e0`](https://github.com/nodejs/node/commit/c8db0475e0)] - **test**: refactor test-fs-read-* (Rich Trott) [#13501](https://github.com/nodejs/node/pull/13501)
+* [[`ad07c46b00`](https://github.com/nodejs/node/commit/ad07c46b00)] - **test**: refactor domain tests (Rich Trott) [#13480](https://github.com/nodejs/node/pull/13480)
+* [[`fe5ea3feb0`](https://github.com/nodejs/node/commit/fe5ea3feb0)] - **test**: check callback not invoked on lookup error (Rich Trott) [#13456](https://github.com/nodejs/node/pull/13456)
+* [[`216cb3f6e9`](https://github.com/nodejs/node/commit/216cb3f6e9)] - **test,benchmark**: stabilize child-process (Refael Ackermann) [#13457](https://github.com/nodejs/node/pull/13457)
+
 
 <a id="8.1.0"></a>
 ## 2017-06-07, Version 8.1.0 (Current), @jasnell
