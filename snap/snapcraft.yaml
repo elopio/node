@@ -13,6 +13,9 @@ confinement: classic
 apps:
   node:
     command: usr/local/bin/node
+  npm:
+    command: usr/local/bin/npm
+    aliases: [npm]
 
 parts:
   node:
